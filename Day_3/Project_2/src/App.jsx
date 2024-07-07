@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -16,7 +16,9 @@ function App() {
 
   const addTask = () => {
     if (title.trim() && description.trim()) {
-      setTodos([...todos, { title, description, done: false }]);
+      const MyUpdatedTask = [...todos, { title, description, done: false }];
+      setTodos(MyUpdatedTask);
+      localStorage.setItem('todos', JSON.stringify(MyUpdatedTask));
       setTitle('');
       setDescription('');
     }
@@ -26,12 +28,21 @@ function App() {
     const newTodos = [...todos];
     newTodos[index].done = !newTodos[index].done;
     setTodos(newTodos);
+    localStorage.setItem('todos', JSON.stringify(newTodos));
   };
 
   const removeTask = (index) => {
     const newTodos = todos.filter((_, i) => i !== index);
     setTodos(newTodos);
+    localStorage.setItem('todos', JSON.stringify(newTodos));
   };
+
+  useEffect(() => {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      setTodos(JSON.parse(savedTodos));
+    }
+  }, []);
 
   return (
     <div className="app-container">
