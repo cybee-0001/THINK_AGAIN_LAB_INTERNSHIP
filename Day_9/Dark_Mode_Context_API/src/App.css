@@ -1,0 +1,33 @@
+.app {
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.app.light {
+  background-color: white;
+  color: black;
+}
+
+.app.dark {
+  background-color: black;
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.app.light button {
+  background-color: black;
+  color: white;
+}
+
+.app.dark button {
+  background-color: white;
+  color: black;
+}
