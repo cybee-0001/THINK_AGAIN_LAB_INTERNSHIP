@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 function Timer() {
-  const [seconds, setSeconds] = useState(300); // 300 seconds = 5 minutes
-  const [isActive, setIsActive] = useState(false); // To track if the timer is active
+  const [seconds, setSeconds] = useState(900); 
+  const [isActive, setIsActive] = useState(false); 
 
   useEffect(() => {
     let interval;
@@ -12,7 +12,6 @@ function Timer() {
       }, 1000);
     }
 
-    // Clear the interval on unmount or when isActive changes
     return () => clearInterval(interval);
   }, [isActive, seconds]);
 
@@ -25,7 +24,7 @@ function Timer() {
   const startTimer = () => {
     if (seconds > 0 && !isActive) {
       setIsActive(true);
-      setSeconds((prev) => prev - 1); // Immediately decrease by 1 to avoid delay
+      setSeconds((prev) => prev - 1); 
     }
   };
 
